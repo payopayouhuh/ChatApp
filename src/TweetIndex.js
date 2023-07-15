@@ -25,11 +25,11 @@ class TweetIndex extends React.Component {
           <ul>
             {this.props.items.map((item, i) => (
               <li key={i}>
-              <div className={`tweet-bc ${item.user === 'You' ? 'you-tweet' : ''}`}>
+              <div className={`tweet-bc ${item.id === 'You' ? 'you-tweet' : ''}`}>
                 <div className="balloon6">
                   <div className="faceicon">
-                    <img src={item.user === 'You' ? youIcon : icon}/>
-                    {item.user}
+                    <img src={item.id === 'You' ? youIcon : icon}/>
+                    <span className="ID">{item.id}</span>
                   </div>
                   <div className="tweeting">
                     <div className="tweets">

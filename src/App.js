@@ -7,7 +7,7 @@ const App = () => {
   const [items, setItems] = useState([]);
   const [user, setUser] = useState('You');
   const [text, setText] = useState('');
-  const [messages, setMessages] = useState([]);
+
   const [isInitialRender, setIsInitialRender] = useState(true);
 
   useEffect(() => {
@@ -16,20 +16,21 @@ const App = () => {
         try {
           const response = await axios.get('http://localhost:5000/aimessage');
           const data = response.data;
-          const newMessages = data.map((item) => ({
+
+          const newItems = data.map((item) => ({
             id: item.id,
             text: item.text,
           }));
-          setMessages(newMessages);
+
+          setItems(items.concat(newItems));
           setIsInitialRender(false);
         } catch (error) {
           console.error('Error fetching data:', error);
         }
       };
       fetchData();
-      setIsInitialRender(false);
     }
-  }, [isInitialRender]);
+  }, [isInitialRender, items]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,7 +42,7 @@ const App = () => {
       return;
     }
     const newItem = {
-      id: user,
+      id: 'You',
       text: text,
     };
     axios.post('http://localhost:5000/message', newItem)
@@ -58,7 +59,7 @@ const App = () => {
         <p className="title">議論：AI技術の未来</p>
       </header>
       <div className="tweet-main">
-        <TweetIndex items={messages} />
+        <TweetIndex items={items} />
       </div>
       <div className="container">
         <form onSubmit={handleSubmit} autoComplete="off">
