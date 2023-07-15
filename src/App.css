@@ -1,38 +1,166 @@
-.App {
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('./background.png');
+  background-size: cover;
+  background-position: center center;
+}
+
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  padding: 15px 0;
+  margin: 0 auto;
   text-align: center;
+  vertical-align: middle;
+  /*background: rgb(1, 107, 1);*/
+  margin-bottom: 1em;
+  padding: 0.4em 0.8em;
+  color: #fff;
+  z-index: 30;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form {
+  position: fixed;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  z-index: 20;
+}
+textarea,button {
+  height: 50px;
+  border: 2px solid #0a0;
+  border-radius: 0.67em;
+  background-color: snow;
+}
+textarea {
+  font-size: 1em;
+  line-height: 1.2;
+  text-align: center;
+  padding: 0.5em;
+  width: 300px;
+  box-sizing: border-box;
+  margin: 5px;
+}
+button {
+  height: 50px;
+  border: 2px solid #0a0;
+  border-radius: 0.67em;
+  background-color: snow;
+}
+#name {
+  width: 120px;
+}
+#tweet {
+  width: 400px;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+.tweet-main{
+  padding:100px 0 100px 0;
+  width:350px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+.tweet-bc {
+  padding: 5px 10px;
+  max-width: 450px;
+  text-align: right;
+  font-size: 14px;
+  border-radius: 10px;
+  word-wrap: break-word;
+}
+.balloon6 {
+    width: 100%;
+    margin: 10px 0;
+    overflow: hidden;
+}
+.balloon6 .faceicon {
+    float: left;
+    margin-right: -50px;
+    width: 60px;
+    text-align: center;
+}
+.balloon6 .faceicon img{
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+.balloon6 .tweeting {
+    width: 100%;
+    text-align: left;
+}
+.tweets {
+    display: inline-block;
+    position: relative;
+    margin: 20px 0 0 70px;
+    padding: 10px;
+    max-width: 230px;
+    border-radius: 12px;
+    background: #edf1ee;
+    z-index: 10;
+}
+.tweets:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 3px;
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid #edf1ee;
+    -ms-transform: rotate(35deg);
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+}
+.tweets p {
+    margin: 0;
+    padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+
+/* 追加されたスタイル */
+.you-tweet {
+  text-align: left; /* 吹き出しを右に配置するために左揃えにします */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.you-tweet .faceicon {
+  float: right; /* アイコンを右側に配置します */
+  margin-right: 0;
+  margin-left: -50px;
+}
+
+.you-tweet .tweeting {
+  text-align: right; /* テキストを右側に配置します */
+}
+
+.you-tweet .tweets {
+  margin: 20px 70px 0 0; /* 吹き出しを右側に配置します */
+  background: #a6e1ec; /* テキストボックスの色を変更します */
+}
+
+.you-tweet .tweets:after {
+  left: auto;
+  right: -10px;
+  border-left: 18px solid #a6e1ec; /* 吹き出しの尖り部分を右側に配置し、色を合わせます */
+  border-right: 0;
+  -ms-transform: rotate(-35deg);
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
 }

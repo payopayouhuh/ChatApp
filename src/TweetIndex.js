@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import icon from './icon.png';
+import youIcon from './your_icon.png';
 
 class TweetIndex extends React.Component {
 
@@ -26,7 +28,7 @@ class TweetIndex extends React.Component {
               <div className={`tweet-bc ${item.user === 'You' ? 'you-tweet' : ''}`}>
                 <div className="balloon6">
                   <div className="faceicon">
-                    <img src={item.user === 'You' ? 'you_icon.png' : 'icon.png'}/>
+                    <img src={item.user === 'You' ? youIcon : icon}/>
                     {item.user}
                   </div>
                   <div className="tweeting">
