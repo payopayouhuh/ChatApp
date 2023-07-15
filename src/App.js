@@ -7,6 +7,7 @@ const App = () => {
   const [items, setItems] = useState([]);
   const [user, setUser] = useState('You');
   const [text, setText] = useState('');
+  const [turns, setTurns] = useState(3); // ターン数を追加
 
   const [isInitialRender, setIsInitialRender] = useState(true);
 
@@ -51,17 +52,27 @@ const App = () => {
     setItems(items.concat(newItem));
     setUser('You');
     setText('');
+    setTurns(turns - 1); // ターン数を減らす
+
   };
 
   return (
     <React.Fragment>
       <header>
         <p className="title">議論：AI技術の未来</p>
+        {turns > 0 && (
+          <p>残りターン数: {turns}</p> 
+        )}
+
+        {turns <= 0 && ( // ターン数が0以下の場合にメッセージを表示
+          <p>ターン数が終了しました</p>
+        )}
       </header>
       <div className="tweet-main">
         <TweetIndex items={items} />
       </div>
       <div className="container">
+
         <form onSubmit={handleSubmit} autoComplete="off">
           <textarea onChange={(event) => setUser(event.target.value)} value={user} id='name' placeholder="name"/><br/>
           <textarea id="tweet" onChange={(event) => setText(event.target.value)} value={text} placeholder="発言"/><br/>
